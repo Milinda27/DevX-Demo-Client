@@ -1,0 +1,78 @@
+<div class="container">
+    <div class="header">ODATA</div>
+    <dx-data-grid
+        id="gridContainer"
+        [dataSource]="dataSource" 
+        [showBorders]="true"
+        [allowColumnResizing]="true"
+        [remoteOperations]="true"
+        (onRowClick)="onRowClick($event)"
+    >
+    <dxo-paging [pageSize]="10"> </dxo-paging>
+    <dxo-filter-row [visible]="true" applyFilter="onClick"></dxo-filter-row>
+    <dxo-header-filter [visible]="true"></dxo-header-filter>
+    <dxo-column-chooser [enabled]="true"></dxo-column-chooser>
+    <dxo-load-panel [enabled]="true"></dxo-load-panel>
+    <dxo-search-panel [visible]="true"></dxo-search-panel>
+    <dxo-scrolling mode="standard"></dxo-scrolling>
+    
+    <dxi-column dataField="ID" caption="ID" [width]="50"> </dxi-column>
+    <dxi-column 
+        dataField="FirstName"
+    ></dxi-column>
+
+    <dxi-column 
+        dataField="LastName"
+    >
+    </dxi-column>
+    <dxi-column 
+        dataField="Email"
+    >
+    </dxi-column>
+
+    <dxi-column 
+        dataField="DoB"
+        caption="Birth Date"
+        dataType="datetime"
+        format= "yyyy-MM-dd"
+    >
+
+    </dxi-column>
+
+    <dxi-column 
+        dataField="Position"
+    >
+    </dxi-column>
+    <dxo-toolbar>
+        <dxi-item
+        widget="dxButton"
+        [options]="buttonOptions"
+        location="before">
+    </dxi-item>
+        <dxi-item 
+            name="columnChooserButton"
+            locateInMenu="auto"
+            location="after">
+        </dxi-item>
+
+        <dxi-item 
+            name="searchPanel"
+            locateInMenu="auto"
+            location="before">
+        </dxi-item>
+
+        <!-- <dxi-item 
+            name="applyFilterButton"
+            locateInMenu="auto"
+            location="after">
+        </dxi-item> -->
+        <dxi-item location="after">
+            <div *dxTemplate>
+              <dx-button icon="refresh" (onClick)="refreshDataGrid()">
+              </dx-button>
+            </div>
+          </dxi-item>
+    </dxo-toolbar>
+
+    </dx-data-grid>
+</div>

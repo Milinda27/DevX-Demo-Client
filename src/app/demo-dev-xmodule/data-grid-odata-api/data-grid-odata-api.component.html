@@ -1,0 +1,50 @@
+<div class="container">
+    <div class="header">ODATA</div>
+    <dx-data-grid 
+        [dataSource]="dataSource" 
+        [showBorders]="true"
+        [allowColumnResizing]="true"
+        [remoteOperations]="true"
+    >
+        <dxo-editing
+        mode="row"
+        [allowAdding]="true"
+        [allowUpdating]="true"
+        [allowDeleting]="true"
+    ></dxo-editing>
+    <dxo-scrolling mode="virtual" rowRenderingMode="virtual"></dxo-scrolling>
+    <dxo-paging [pageSize]="10"> </dxo-paging>
+    <dxo-filter-row [visible]="true"></dxo-filter-row>
+    <dxo-header-filter [visible]="true"></dxo-header-filter>
+
+    <dxi-column dataField="ID" caption="ID" [width]="50"> </dxi-column>
+    <dxi-column 
+        dataField="FirstName"
+    ></dxi-column>
+
+    <dxi-column 
+        dataField="LastName"
+    >
+    </dxi-column>
+    <dxi-column 
+        dataField="Email"
+    >
+    </dxi-column>
+
+    <dxi-column 
+        dataField="DoB"
+        caption="Birth Date"
+        dataType="datetime"
+        format= "yyyy-MM-dd"
+    >
+
+    </dxi-column>
+
+    <dxi-column 
+        dataField="Position"
+    >
+    </dxi-column>
+    <dxo-search-panel [visible]="true"></dxo-search-panel>
+
+    </dx-data-grid>
+</div>

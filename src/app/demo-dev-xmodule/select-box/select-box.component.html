@@ -1,0 +1,25 @@
+<div class="container">
+    <div>Data Source : Array</div>
+    <dx-select-box
+        label="Employee"
+        [dataSource]="employees"
+        labelMode="floating"
+        displayExpr="FirstName"
+        valueExpr="ID"
+        [searchEnabled]="true"
+        (onValueChanged)="onValueChanged($event)">
+    </dx-select-box>
+</div>
+
+<div class="container">
+    <div>Data Source : OData Store</div>
+    <dx-select-box
+        label="Product"
+        [dataSource]="products"
+        labelMode="floating"
+        displayExpr="Product_Name"
+        valueExpr="Product_ID"
+        [searchEnabled]="true"
+        (onValueChanged)="onValueChanged($event)">
+    </dx-select-box>
+</div>

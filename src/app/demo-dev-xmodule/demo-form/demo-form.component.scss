@@ -1,0 +1,15 @@
+::ng-deep .low .dx-radiobutton-checked .dx-radiobutton-icon .dx-radiobutton-icon-dot {
+    background: gray;
+  }
+  
+  ::ng-deep .normal .dx-radiobutton-checked .dx-radiobutton-icon .dx-radiobutton-icon-dot {
+    background: green;
+  }
+  
+  ::ng-deep .urgent .dx-radiobutton-checked .dx-radiobutton-icon .dx-radiobutton-icon-dot {
+    background: orange;
+  }
+  
+  ::ng-deep .high .dx-radiobutton-checked .dx-radiobutton-icon .dx-radiobutton-icon-dot {
+    background: red;
+  }

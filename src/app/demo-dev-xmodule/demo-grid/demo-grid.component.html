@@ -1,0 +1,131 @@
+
+
+<div class="container">
+    <div class="header">JSON Data</div>
+    <dx-data-grid
+        id="jsonDataGrid"
+        dataSource='assets/dataSource.json'
+        keyExpr="ID"
+        [columns]="columns"
+        [showBorders]="true"
+        >
+        <dxo-filter-row
+    [visible]="true"
+  ></dxo-filter-row>
+  <dxo-header-filter [visible]="true"></dxo-header-filter>
+    </dx-data-grid>
+</div>
+
+<div class="container">
+    <div class="header">ODATA</div>
+    <dx-data-grid 
+        [dataSource]="dataSource" 
+        [showBorders]="true"
+        [allowColumnResizing]="true"
+    >
+        <dxo-editing
+        mode="row"
+        [allowUpdating]="true"
+        [allowDeleting]="true"
+    ></dxo-editing>
+
+    <dxi-column dataField="Product_ID" caption="ID" [width]="50"> </dxi-column>
+    <dxi-column dataField="Product_Name"></dxi-column>
+
+    <dxi-column 
+        dataField="Product_Cost"
+        dataType="number"
+        allowEditing=true
+    >
+        <dxo-format
+            type="currency"
+            [precision]="2">
+        </dxo-format>
+    </dxi-column>
+
+    <dxi-column 
+        dataField="Product_Sale_Price"
+        dataType="number"
+    >
+        <dxo-format
+            type="currency"
+            [precision]="2">
+        </dxo-format>
+    </dxi-column>
+
+    <dxi-column 
+        dataField="Product_Retail_Price"
+        dataType="number"
+    >
+        <dxo-format
+            type="currency"
+            [precision]="2">
+        </dxo-format>
+    </dxi-column>
+
+    <dxi-column 
+        dataField="Product_Current_Inventory"
+        dataType="number"
+        caption="Inventory"
+    ></dxi-column>
+
+    <dxo-search-panel [visible]="true"></dxo-search-panel>
+    <dxo-paging [pageSize]="10"></dxo-paging>
+    </dx-data-grid>
+</div>
+
+<div class="container">
+    <div class="header">Web Api</div>
+    <dx-data-grid 
+        id="gridContainer"
+        [dataSource]="dataSourceWebApi"
+        [remoteOperations]="true" 
+        [showBorders]="true"
+        [allowColumnResizing]="true"
+    >
+    <dxo-filter-row [visible]="true"></dxo-filter-row>
+    <dxo-header-filter [visible]="true"></dxo-header-filter>
+    <dxo-editing
+        mode="row"
+        [allowUpdating]="true"
+        [allowDeleting]="true"
+    ></dxo-editing>
+
+    <dxi-column dataField="CustomerID" caption="ID" [width]="50"> </dxi-column>
+    <dxi-column dataField="OrderDate" dataType="date"></dxi-column>
+
+    <dxi-column 
+        dataField="Freight"
+        dataType="range"
+        allowEditing=true
+    >
+        <dxo-format
+            [precision]="2">
+        </dxo-format>
+    </dxi-column>
+
+    <dxi-column 
+        dataField="ShipCountry"
+        dataType="number"
+    >
+        <dxo-format
+            [precision]="2">
+        </dxo-format>
+    </dxi-column>
+
+    <dxi-column 
+        dataField="ShipVia" 
+        caption="Shipping Company" 
+        dataType="number"
+    >
+        <dxo-format
+            [precision]="2">
+        </dxo-format>
+    </dxi-column>
+
+    <dxo-search-panel [visible]="true"></dxo-search-panel>
+    <dxo-load-panel [enabled]="false"></dxo-load-panel>
+    <dxo-scrolling mode="infinite"></dxo-scrolling>
+    <dxo-sorting mode="none"></dxo-sorting>
+    </dx-data-grid>
+</div>

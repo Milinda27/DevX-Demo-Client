@@ -1,0 +1,11 @@
+<div class="dx-feild-value">
+    <dx-drop-down-button
+        [items]="actions"
+        keyExpr="id"
+        displayExpr="text"
+        text="Select from here"
+        [dropDownOptions]="{ width: 230 }"
+        (onItemClick)="logAction($event)"
+    >
+    </dx-drop-down-button>
+</div>

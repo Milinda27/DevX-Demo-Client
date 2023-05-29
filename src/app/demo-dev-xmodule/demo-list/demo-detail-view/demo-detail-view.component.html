@@ -1,0 +1,61 @@
+<div class="container">
+    <div class="header">
+        <h2>Details</h2>
+        <button *ngIf="user" mat-button color="primary" (click)="onDelete()"><mat-icon>delete</mat-icon></button>
+    </div>
+    <form [formGroup]="form" (ngSubmit)="onFormSubmit(form.value)">
+        <div class="form-container">
+            <div class="form-field-wrapper">
+                <mat-form-field appearance="outline">
+                    <mat-label>First Name</mat-label>
+                    <input matInput formControlName="firstName" required>
+                </mat-form-field>
+                
+            </div>
+            <div class="form-field-wrapper">
+                <mat-form-field appearance="outline">
+                    <mat-label>Last Name</mat-label>
+                    <input matInput formControlName="lastName" required>
+                </mat-form-field>
+                
+            </div>
+            <div class="form-field-wrapper">
+                <mat-form-field appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input matInput formControlName="email" required>
+                </mat-form-field>
+                
+            </div>
+            <div class="form-field-wrapper">
+                <mat-form-field appearance="outline">
+                    <mat-label>Position</mat-label>
+                    <mat-select formControlName="position">
+                        <mat-option *ngFor="let type of userTypes;index as i" [value]="type">
+                            {{userTypes[i]}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                
+            </div>
+            <div class="form-field-wrapper">
+                <mat-form-field appearance="fill">
+                    <mat-label>Birth Date</mat-label>
+                    <input matInput [matDatepicker]="dp" formControlName="dob">
+                    <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+                    <mat-datepicker #dp disabled="false"></mat-datepicker>
+                </mat-form-field>
+                
+            </div>
+            <div class="form-field-wrapper">
+                <button type="submit" mat-button color="primary" [disabled]="!form.valid || form.pristine">Submit</button>
+                
+            </div>
+            
+
+            
+        
+
+
+    </div>
+    </form>
+</div>

@@ -1,0 +1,26 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .grid-container{
+        margin:10px;
+    }
+    
+    .detail-container{
+        margin:10px;
+    }
+
+}
+::ng-deep snack-bar-container{
+    color: white;
+    text-align: center;
+    font-size: 24px;
+    text-shadow: 2px 2px 4px black
+}
+::ng-deep snack-bar-container.success{
+    background-color: lightgreen;
+}
+
+::ng-deep snack-bar-container.failure{
+    background-color: lightcoral;
+}

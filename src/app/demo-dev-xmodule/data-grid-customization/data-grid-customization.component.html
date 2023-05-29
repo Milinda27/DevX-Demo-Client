@@ -1,0 +1,176 @@
+<div class="container">
+    <div class="header">CRUD Functions</div>
+    <dx-data-grid 
+        id = 'gridContainer'
+        [dataSource]="dataSource" 
+        [showBorders]="true"
+        [remoteOperations]="true"
+        [wordWrapEnabled]="true"
+        [allowColumnResizing]="true"
+    >
+        <dxo-editing
+            mode="row"
+            [allowAdding]="true"
+            [allowUpdating]="true"
+            [allowDeleting]="true"
+    ></dxo-editing>
+
+    <dxi-column dataField="CustomerID" caption="Customer">
+        <dxo-lookup
+          [dataSource]="customersData"
+          valueExpr="Value"
+          displayExpr="Text"
+        ></dxo-lookup>
+      </dxi-column>
+      <dxi-column dataField="OrderDate" dataType="date"></dxi-column>
+      <dxi-column dataField="Freight"></dxi-column>
+      <dxi-column dataField="ShipCountry"></dxi-column>
+      <dxi-column dataField="ShipVia" caption="Shipping Company" dataType="number">
+        <dxo-lookup
+          [dataSource]="shippersData"
+          valueExpr="Value"
+          displayExpr="Text"
+        ></dxo-lookup>
+      </dxi-column>
+    
+      <dxo-summary>
+        <dxi-total-item column="CustomerID" summaryType="count"> </dxi-total-item>
+        <dxi-total-item column="Freight" summaryType="sum" valueFormat="#0.00">
+        </dxi-total-item>
+      </dxo-summary>
+
+    <dxo-search-panel [visible]="true"></dxo-search-panel>
+    <dxo-scrolling mode="infinite"></dxo-scrolling>
+    </dx-data-grid>
+</div>
+
+<div class="container">
+    <div class="header">Export Functions</div>
+    <dx-data-grid 
+        id = 'gridContainer'
+        [dataSource]="dataSource" 
+        [showBorders]="true"
+        [remoteOperations]="true"
+        [wordWrapEnabled]="true"
+        [allowColumnResizing]="true"
+        (onExporting)="onExporting($event)"
+    >
+        <dxo-editing
+            mode="row"
+            [allowAdding]="true"
+            [allowUpdating]="true"
+            [allowDeleting]="true"
+    ></dxo-editing>
+
+    <dxi-column dataField="CustomerID" caption="Customer">
+        <dxo-lookup
+          [dataSource]="customersData"
+          valueExpr="Value"
+          displayExpr="Text"
+        ></dxo-lookup>
+      </dxi-column>
+      <dxi-column dataField="OrderDate" dataType="date"></dxi-column>
+      <dxi-column dataField="Freight"></dxi-column>
+      <dxi-column dataField="ShipCountry"></dxi-column>
+      <dxi-column dataField="ShipVia" caption="Shipping Company" dataType="number">
+        <dxo-lookup
+          [dataSource]="shippersData"
+          valueExpr="Value"
+          displayExpr="Text"
+        ></dxo-lookup>
+      </dxi-column>
+    
+      <dxo-summary>
+        <dxi-total-item column="CustomerID" summaryType="count"> </dxi-total-item>
+        <dxi-total-item column="Freight" summaryType="sum" valueFormat="#0.00">
+        </dxi-total-item>
+      </dxo-summary>
+
+      <dxo-export
+        [enabled]="true"
+        [formats]="['pdf']"
+        [allowExportSelectedData]="true"
+      ></dxo-export>
+
+    <dxo-search-panel [visible]="true"></dxo-search-panel>
+    <dxo-scrolling mode="infinite"></dxo-scrolling>
+    </dx-data-grid>
+</div>
+
+<div class="container">
+  <div class="header">Filtering and Sorting Functions</div>
+  <dx-data-grid 
+      id = 'gridContainer'
+      [dataSource]="dataForSortAndFilter" 
+      [showBorders]="true"
+      [remoteOperations]="true"
+      [wordWrapEnabled]="true"
+      [allowColumnResizing]="true"
+      [rowAlternationEnabled]="true"
+  >
+    <dxo-sorting mode="single"></dxo-sorting>
+      <dxo-filter-row
+        [visible]="true"
+        applyFilter="auto"
+    ></dxo-filter-row>
+
+    <dxo-header-filter [visible]="true"></dxo-header-filter>
+
+    <dxo-column-chooser [enabled]="true"></dxo-column-chooser>
+
+    <dxo-search-panel
+      [visible]="true"
+      [width]="240"
+      placeholder="Search..."
+    ></dxo-search-panel>
+
+
+  <dxi-column dataField="CustomerID" caption="Customer" sortOrder="asc">
+      <dxo-lookup
+        [dataSource]="customerDataForSortAndFilter"
+        valueExpr="Value"
+        displayExpr="Text"
+      ></dxo-lookup>
+    </dxi-column>
+    <dxi-column dataField="OrderDate" dataType="date" sortOrder="asc"></dxi-column>
+    <dxi-column 
+        dataField="Freight" 
+        sortOrder="asc"
+        format="0.##"
+        cellTemplate="cellTemplate"        
+        >
+    </dxi-column>
+    <div *dxTemplate="let data of 'cellTemplate'"
+          [class] = "data.value > 50.00 ? 'high':'low'">
+            <span>{{data.value}}</span>
+    </div>
+    <dxi-column 
+      dataField="ShipCountry"
+      cellTemplate="flagTemplate"
+    >
+      <dxo-header-filter 
+        [dataSource]="countryFilter"
+      ></dxo-header-filter>
+    </dxi-column>
+    <div *dxTemplate="let data of 'flagTemplate'"
+          [class] = "data.value.toLowerCase() ">
+            <span>{{data.value}}</span>
+    </div>
+    <dxi-column dataField="ShipVia" caption="Shipping Company" dataType="number">
+      <dxo-lookup
+        [dataSource]="shipperDataForSortAndFilter"
+        valueExpr="Value"
+        displayExpr="Text"
+      ></dxo-lookup>
+    </dxi-column>
+  
+    <dxo-summary>
+      <dxi-total-item column="CustomerID" summaryType="count"> </dxi-total-item>
+      <dxi-total-item column="Freight" summaryType="sum" valueFormat="#0.00">
+      </dxi-total-item>
+    </dxo-summary>
+
+  <dxo-search-panel [visible]="true"></dxo-search-panel>
+  <dxo-scrolling mode="infinite"></dxo-scrolling>
+  </dx-data-grid>
+</div>

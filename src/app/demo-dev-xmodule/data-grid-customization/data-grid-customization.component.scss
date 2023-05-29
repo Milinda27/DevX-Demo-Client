@@ -1,0 +1,38 @@
+.container{
+    margin:10px;
+    padding: 5px;
+    background: #666;
+}
+
+.header{
+    margin: 0 5px;
+    text-align: center;
+    color:white;
+}
+::ng-deep #gridContainer {
+    height: 90vh;
+}
+
+::ng-deep #gridContainer .high{
+    color: white;
+    background:rgba(200,0,0,0.8);
+}
+
+::ng-deep #gridContainer .low{
+    color: white;
+    background:rgba(0,200,0,0.8);
+}
+
+::ng-deep #gridContainer .france{
+    ::after{
+        content: '';
+        display: inline;
+        height: 20px;
+        width: 20px;
+        position: absolute;
+        transform: translateX(2rem);
+        background-repeat: no-repeat;
+        background-size: 20px 20px;
+        background-image: url(https://images.emojiterra.com/google/noto-emoji/unicode-15/color/512px/1f1eb-1f1f7.png);
+    }
+}

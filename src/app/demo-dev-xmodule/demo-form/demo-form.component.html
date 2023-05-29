@@ -1,0 +1,71 @@
+<form action="" (submit)="handleSubmit($event)">
+    <dx-form 
+        id="form"
+        [formData]="employee"
+        [colCount]="2"
+        [readOnly]="isFormReadOnly"
+        (onFieldDataChanged)="form_fieldDataChanged($event)">
+    >
+        <!-- Configuration goes here -->
+        <dxi-item
+            itemType = "group"
+            caption = "Personal Information">
+            
+            <dxi-item dataField="FirstName" [isRequired]="true"></dxi-item>
+            <dxi-item dataField="LastName"></dxi-item>
+            <dxi-item dataField="Position"></dxi-item>
+            <dxi-item dataField="hireDate"></dxi-item>
+            <dxi-item 
+                dataField="notes" 
+                [colSpan]="2">
+            </dxi-item>
+    
+            <dxi-item dataField="officeNumber">
+                <dxi-validation-rule type="numeric">
+                </dxi-validation-rule>
+            </dxi-item>
+        </dxi-item>
+        <dxi-item
+            itemType = "group"
+            caption = "Contacts">
+            
+            <dxi-item dataField="LinkedIn"></dxi-item>
+            <dxi-item dataField="Skype"></dxi-item>
+            <dxi-item dataField="Email"></dxi-item>
+        </dxi-item>
+
+        
+        <dxi-item
+        itemType = "group"
+        caption = "Radio Button"
+        dataField="priority"
+        >
+            <div class="dx-field-label">priority</div>
+            <div class="dx-field-value">
+                <dx-radio-group
+                    id="radio-group-with-selection"
+                    
+                    [items]="priorities"
+                    [(value)]="colorPriority"
+                    [ngClass]="colorPriority.toLowerCase()"
+                    (onValueChanged)="onValueChanged($event)"
+                    >
+                </dx-radio-group>
+            </div>
+    </dxi-item>
+    
+    <dxi-item 
+            itemType="button"
+            [buttonOptions]="submitButtonOptions">
+    </dxi-item>
+    </dx-form>
+</form>
+
+<dx-check-box
+    text="Enable read-only mode"
+    [(value)]="isFormReadOnly">
+</dx-check-box>
+
+<div>
+    <pre>Details : {{submitedDetails | json}}</pre>
+</div>

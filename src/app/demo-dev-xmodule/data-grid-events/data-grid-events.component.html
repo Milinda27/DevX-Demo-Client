@@ -1,0 +1,296 @@
+<div class="container">
+    <div class="header">Data Grid Events - Row Editing</div>
+    <dx-data-grid 
+        id='gridContainer' 
+        [dataSource]="dataSource" 
+        [showBorders]="true" 
+        [remoteOperations]="true"
+        [wordWrapEnabled]="true" 
+        [allowColumnResizing]="true" 
+        [rowAlternationEnabled]="true"
+        (onEditingStart)="logEvent('EditingStart')"
+        (onInitNewRow)="logEvent('InitNewRow')"
+        (onRowInserting)="logEvent('RowInserting')"
+        (onRowInserted)="logEvent('RowInserted')"
+        (onRowUpdating)="logEvent('RowUpdating')"
+        (onRowUpdated)="logEvent('RowUpdated')"
+        (onRowRemoving)="logEvent('RowRemoving')"
+        (onRowRemoved)="logEvent('RowRemoved')"
+        (onSaving)="logEvent('Saving')"
+        (onSaved)="logEvent('Saved')"
+        (onEditCanceling)="logEvent('EditCanceling')"
+    >
+
+        <dxo-editing 
+            mode="row" 
+            [allowAdding]="true" 
+            [allowUpdating]="true" 
+            [allowDeleting]="true">
+        </dxo-editing>
+
+        <dxo-column-chooser 
+            [enabled]="true">
+        </dxo-column-chooser>
+
+        <dxo-search-panel 
+            [visible]="true" 
+            [width]="240" 
+            placeholder="Search...">
+        </dxo-search-panel>
+
+
+        <dxi-column 
+            dataField="CustomerID" 
+            caption="Customer" 
+            sortOrder="asc">
+                <dxo-lookup 
+                    [dataSource]="customerData" 
+                    valueExpr="Value" 
+                    displayExpr="Text">
+                </dxo-lookup>
+        </dxi-column>
+
+        <dxi-column 
+            dataField="OrderDate"  
+            dataType="date" 
+            sortOrder="asc">
+        </dxi-column>
+
+        <dxi-column 
+            dataField="Freight" 
+            sortOrder="asc" 
+            format="#.##" 
+            >
+
+            <!-- <dxi-validation-rule 
+                type="numeric"
+                message="please provide a number"
+                
+            ></dxi-validation-rule> -->
+        </dxi-column>
+
+        <dxi-column 
+            dataField="ShipCountry" 
+        >
+        </dxi-column>
+
+        <dxi-column 
+            dataField="ShipVia" 
+            caption="Shipping Company" 
+            dataType="number">
+                <dxo-lookup 
+                    [dataSource]="shipperData" 
+                    valueExpr="Value" 
+                    displayExpr="Text">
+                </dxo-lookup>
+        </dxi-column>
+
+        <dxo-summary>
+            <dxi-total-item column="CustomerID" summaryType="count"> </dxi-total-item>
+            <dxi-total-item column="Freight" summaryType="sum" valueFormat="#0.00">
+            </dxi-total-item>
+        </dxo-summary>
+
+        <dxo-search-panel [visible]="true"></dxo-search-panel>
+        <dxo-scrolling mode="infinite"></dxo-scrolling>
+    </dx-data-grid>
+</div>
+
+<div class="container">
+    <div class="header">Data Grid Events - Cell Editing</div>
+    <dx-data-grid 
+        id='gridContainer' 
+        [dataSource]="dataSource" 
+        [showBorders]="true" 
+        [remoteOperations]="true"
+        [wordWrapEnabled]="true" 
+        [allowColumnResizing]="true" 
+        [rowAlternationEnabled]="true"
+        (onEditingStart)="logEvent('EditingStart')"
+        (onInitNewRow)="logEvent('InitNewRow')"
+        (onRowInserting)="logEvent('RowInserting')"
+        (onRowInserted)="logEvent('RowInserted')"
+        (onRowUpdating)="logEvent('RowUpdating')"
+        (onRowUpdated)="logEvent('RowUpdated')"
+        (onRowRemoving)="logEvent('RowRemoving')"
+        (onRowRemoved)="logEvent('RowRemoved')"
+        (onSaving)="logEvent('Saving')"
+        (onSaved)="logEvent('Saved')"
+        (onEditCanceling)="logEvent('EditCanceling')"
+        (onEditCanceled)="logEvent('EditCanceled')"
+        (onSelectionChanged)="onCellChange($event)"
+        (onCellClick)="onCellClick($event)"
+    >
+
+        <dxo-editing 
+            mode="cell" 
+            [allowAdding]="true" 
+            [allowUpdating]="true" 
+            [allowDeleting]="true">
+        </dxo-editing>
+
+        <dxo-column-chooser 
+            [enabled]="true">
+        </dxo-column-chooser>
+
+        <dxo-search-panel 
+            [visible]="true" 
+            [width]="240" 
+            placeholder="Search...">
+        </dxo-search-panel>
+
+
+        <dxi-column 
+            dataField="CustomerID" 
+            caption="Customer" 
+            sortOrder="asc">
+                <dxo-lookup 
+                    [dataSource]="customerData" 
+                    valueExpr="Value" 
+                    displayExpr="Text">
+                </dxo-lookup>
+        </dxi-column>
+
+        <dxi-column 
+            dataField="OrderDate"  
+            dataType="date" 
+            sortOrder="asc">
+        </dxi-column>
+
+        <dxi-column 
+            dataField="Freight" 
+            sortOrder="asc" 
+            format="0.##" 
+        >
+        </dxi-column>
+
+        <dxi-column 
+            dataField="ShipCountry">
+        </dxi-column>
+
+        <dxi-column 
+            dataField="ShipVia" 
+            caption="Shipping Company" 
+            dataType="number">
+                <dxo-lookup 
+                    [dataSource]="shipperData" 
+                    valueExpr="Value" 
+                    displayExpr="Text">
+                </dxo-lookup>
+        </dxi-column>
+
+        <dxo-summary>
+            <dxi-total-item column="CustomerID" summaryType="count"> </dxi-total-item>
+            <dxi-total-item column="Freight" summaryType="sum" valueFormat="#0.00">
+            </dxi-total-item>
+        </dxo-summary>
+
+        <dxo-search-panel [visible]="true"></dxo-search-panel>
+        <dxo-scrolling mode="infinite"></dxo-scrolling>
+    </dx-data-grid>
+</div>
+
+<div class="container">
+    <div class="header">Data Grid Events - Batch Editing</div>
+    <dx-data-grid 
+        id='gridContainer' 
+        [dataSource]="dataSource" 
+        [showBorders]="true" 
+        [remoteOperations]="true"
+        [wordWrapEnabled]="true" 
+        [allowColumnResizing]="true" 
+        [rowAlternationEnabled]="true"
+        [errorRowEnabled]="true"
+        (onEditingStart)="logEvent('EditingStart')"
+        (onInitNewRow)="logEvent('InitNewRow')"
+        (onRowInserting)="logEvent('RowInserting')"
+        (onRowInserted)="logEvent('RowInserted')"
+        (onRowUpdating)="logEvent('RowUpdating')"
+        (onRowUpdated)="logEvent('RowUpdated')"
+        (onRowRemoving)="logEvent('RowRemoving')"
+        (onRowRemoved)="logEvent('RowRemoved')"
+        (onSaving)="logEvent('Saving')"
+        (onSaved)="logEvent('Saved')"
+        (onEditCanceling)="logEvent('EditCanceling')"
+        (onEditCanceled)="logEvent('EditCanceled')"
+    >
+
+        <dxo-editing 
+            mode="batch" 
+            [allowAdding]="true" 
+            [allowUpdating]="true" 
+            [allowDeleting]="true"
+            [startEditAction]="'click'">
+        </dxo-editing>
+        <dxo-sorting mode="single"></dxo-sorting>
+        <dxo-filter-row
+          [visible]="true"
+          applyFilter="auto"
+      ></dxo-filter-row>
+        <dxo-column-chooser 
+            [enabled]="true">
+        </dxo-column-chooser>
+
+        <dxo-search-panel 
+            [visible]="true" 
+            [width]="240" 
+            placeholder="Search...">
+        </dxo-search-panel>
+
+
+        <dxi-column 
+            dataField="CustomerID" 
+            caption="Customer" 
+            sortOrder="asc">
+                <dxo-lookup 
+                    [dataSource]="customerData" 
+                    valueExpr="Value" 
+                    displayExpr="Text">
+                </dxo-lookup>
+        </dxi-column>
+
+        <dxi-column 
+            dataField="OrderDate"  
+            dataType="date" 
+            sortOrder="asc">
+        </dxi-column>
+
+        <dxi-column 
+            dataField="Freight"
+            sortOrder="asc"
+            
+            format="#.##">
+                <dxi-validation-rule
+                    type="numeric" 
+                    message="Enter numeric value">
+                </dxi-validation-rule>
+        </dxi-column>
+
+        <dxi-column 
+            dataField="ShipCountry"
+            [calculateFilterExpression]="calculateFilterExpression">
+        </dxi-column>
+
+        <dxi-column 
+            dataField="ShipVia" 
+            caption="Shipping Company" 
+            dataType="number">
+                <dxo-lookup 
+                    [dataSource]="shipperData" 
+                    valueExpr="Value" 
+                    displayExpr="Text">
+                </dxo-lookup>
+        </dxi-column>
+
+        <dxi-column
+            caption="Freight percentage"
+            format="#.##%"
+            [calculateCellValue]="calculateFreight"
+            
+        >    
+        </dxi-column>
+
+        <dxo-search-panel [visible]="true"></dxo-search-panel>
+        <dxo-scrolling mode="infinite"></dxo-scrolling>
+    </dx-data-grid>
+</div>

@@ -1,0 +1,17 @@
+body{
+    font-family:sans-serif;
+}
+
+.sidebar{
+    height: 100%;
+    width: 20%;
+    float:left;
+    background-image: linear-gradient(to bottom,white,gray);
+}
+
+.content{
+    display: flex;
+    height: 100vh;
+    width: 80%;
+    float:right;
+}

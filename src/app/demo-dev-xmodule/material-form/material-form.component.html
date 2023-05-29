@@ -1,0 +1,45 @@
+<form [formGroup]="form" (ngSubmit)="onFormSubmit(form.value)">
+    <div class="form-container">
+        <mat-form-field appearance="outline">
+            <mat-label>First Name</mat-label>
+            <input matInput formControlName="firstName" required>
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline">
+            <mat-label>Last Name</mat-label>
+            <input matInput formControlName="lastName" required>
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline">
+            <mat-label>Position</mat-label>
+            <mat-select formControlName="position">
+                <mat-option value="manager">Manager</mat-option>
+                <mat-option value="employee">Employee</mat-option>
+            </mat-select>
+        </mat-form-field>
+    
+        <label id="example-radio-group-label">Gender</label>
+        <mat-radio-group formControlName = "gender"
+        aria-labelledby="example-radio-group-label"
+        class="example-radio-group">
+            <mat-radio-button value="male">
+                Male
+            </mat-radio-button>
+            <mat-radio-button value="female">
+                Female
+            </mat-radio-button>
+        </mat-radio-group>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Birth Date</mat-label>
+            <input matInput [matDatepicker]="dp" disabled>
+            <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+            <mat-datepicker #dp disabled="false"></mat-datepicker>
+        </mat-form-field>
+
+        <button type="submit" mat-button color="primary" [disabled]="!form.valid">Submit</button>
+</div>
+
+
+
+</form>

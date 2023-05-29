@@ -1,0 +1,36 @@
+.container{
+    padding: 5px;
+    background: #666;
+}
+
+.header{
+    margin: 0 5px;
+    text-align: center;
+    color:white;
+}
+
+::ng-deep .dx-datagrid-header-panel {
+    padding: 5px;
+    background-image: linear-gradient(to right,#666,#ccc)
+  }
+  
+::ng-deep .dx-datagrid-header-panel .dx-toolbar {
+margin: 0;
+padding-right: 20px;
+background-color: transparent;
+}
+
+::ng-deep .informer {
+    height: 70px;
+    width: 130px;
+    text-align: center;
+    color: #fff;
+}
+  
+::ng-deep .count {
+    padding-top: 15px;
+    line-height: 27px;
+    font-size: 28px;
+    margin: 0;
+}
+  

@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="grid-container">
+        <app-demo-grid-view
+            (addEvent)="onAddEvent($event)"
+            (editEvent)="onEditEvent($event)">
+        
+        </app-demo-grid-view>
+    </div>
+    
+    <div class="detail-container" *ngIf="isRowSelected">
+        <app-demo-detail-view
+            [user]="selectedUser"
+            [editMode]="isEditing"
+            (addNewEvent)="onAddNewEvent($event)"
+            (deleteEvent)="onDeleteEvent($event)"
+            (updateEvent)="onUpdateEvent($event)">
+            
+        </app-demo-detail-view>
+    
+    </div>
+</div>

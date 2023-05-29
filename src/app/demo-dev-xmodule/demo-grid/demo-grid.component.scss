@@ -1,0 +1,19 @@
+.container{
+    margin:10px;
+    padding: 5px;
+    background: #666;
+}
+
+.header{
+    margin: 0 5px;
+    text-align: center;
+    color:white;
+}
+
+::ng-deep #gridContainer {
+    height: 440px;
+}
+
+::ng-deep #accordion {
+height: 700px;
+}
